@@ -1,0 +1,55 @@
+#header{
+    background-color: silver;
+}
+nav{
+    background-color: red;
+}
+.main{
+    background-color: chartreuse;
+}
+.sidebar{
+    background-color: cyan;
+}
+footer{
+    background-color: darkgreen;
+}
+nav ul,nav li{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+nav li{
+    display: inline-block;
+    width: 33%;
+    text-align: center;
+}
+a{
+    color:yellow;
+    display: inline-block;
+    width: 100%;
+}
+a:hover{
+    color: black;
+}
+.item:hover{
+    background-color: blue;
+}
+html,body{
+    margin: 0;
+}
+h1{
+    text-align: center;
+    font-size: 15px;
+    margin: 0;
+    padding: 0;
+}
+.col-8{
+    padding: 0;
+}
+.col-4{
+    padding: 0;
+}
+.card{
+    background: red;
+    font-style: italic;
+}
