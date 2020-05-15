@@ -10,23 +10,39 @@
         
         try
         {
-            $join = new PDO('mysql:host=localhost;dbname=Uczelnia', 'root', '');
+            $dba = new PDO('mysql:host=localhost;dbname=Uczelnia', 'root', '');
         }
-        catch (PDOException $e)
+        catch(PDOException $e)
         {
-            echo $e->getMessage() . "<br/>";
+            echo $e->getMessage();
             die();
         }
 
-        $zap = "SELECT s.imie, s.nazwisko, r.kierunek, r.stopień FROM Studenci s JOIN Rok r ON (s.id_rok_studiow = r.id)";
-        $pol = $join->query($zap);
-        while ($row = $pol->fetch()) 
-        {
-            print $row['imie'] . "\t";
-            print $row['nazwisko'] . "\t";
-            print $row['kierunek'] . "\t";
-            print $row['stopień'] . "<br />\n";
+        $jn = 'SELECT s.imie, s.nazwisko, r.kierunek, r.stopien
+		FROM Studenci s
+		INNER JOIN Rok r 
+        ON s.id_rok_studiow = r.id';
+?>
+
+<table>
+<tr>
+    <th>Imię</th>
+    <th>Nazwisko</th>
+    <th>Kierunek</th>
+    <th>Stopień</th>
+</tr>
+
+
+<?php
+        foreach ($dba->query($jn) as $row) {
+            <tr>
+            echo "<td>" $row['imie']"</td>";
+            echo "<td>" $row['nazwisko']"</td>";
+            echo "<td>" $row['kierunek']"</td>";
+            echo "<td>" $row['stopien']"</td>";
+            </tr>
         }
+    
     ?>
    
 </body>

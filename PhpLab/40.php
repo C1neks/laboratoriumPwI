@@ -10,23 +10,24 @@
         
         try
         {
-            $join = new PDO('mysql:host=localhost;dbname=Uczelnia', 'root', '');
+            $dba = new PDO('mysql:host=localhost;dbname=Uczelnia', 'root', '');
         }
-        catch (PDOException $e)
+        catch(PDOException $e)
         {
-            echo $e->getMessage() . "<br/>";
+            echo $e->getMessage();
             die();
         }
 
-        $zap1 = "INSERT INTO Studenci (id,imie, nazwisko, email, id_rok_studiow) VALUES (?,?,?,?,?)";
+        $add1 = 'INSERT INTO Studenci (id,imie, nazwisko, email, id_rok_studiow) VALUES (1,"Marcin", "Baranowski", "baranowskimarcin7@gmail.com", 2),
+        (2,"Tomasz", "Kowalski", "kowalowal@gmail.com", 1),
+        (3,"Krystian", "Bąk", "baczekbezraczek@gmail.com", 2)';
         
-        $join->prepare($zap1)->execute(["1","Marcin", "Baranowski", "baranowskimarcin7@gmail.com", "2"]);
-        $join->prepare($zap1)->execute(["2","Tomasz", "Kowalski", "kowalowal@gmail.com", "1"]);
-        $join->prepare($zap1)->execute(["3","Krystian", "Bąk", "baczekbezraczek@gmail.com", "2"]);
-
-        $zap2 = "INSERT INTO Rok (id, kierunek, stopien) VALUES (?,?,?)";
-        $join->prepare($zap2)->execute(["1", "Ekonomia", "2"]);
-        $join->prepare($zap2)->execute(["2", "Informatyka", "1"]);
+        $dba->exec($add1);
+        
+        $add2 = 'INSERT INTO Rok (id, kierunek, stopien) VALUES (1, "Ekonomia", 2),
+        (2, "Informatyka", 1)';
+        
+        $dba->exec($add2);
     
     ?>
     

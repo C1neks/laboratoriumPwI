@@ -10,16 +10,18 @@
         
         try
         {
-            $join = new PDO('mysql:host=localhost;dbname=Uczelnia', 'root', '');
+            $dba = new PDO('mysql:host=localhost;dbname=Uczelnia', 'root', '');
         }
-        catch (PDOException $e)
+        catch(PDOException $e)
         {
-            echo $e->getMessage() . "<br/>";
+            echo $e->getMessage();
             die();
         }
 
-        $zap = "DELETE FROM studenci WHERE id = 2";
-        $join->query($zap);
+        $del = "DELETE FROM studenci WHERE id = 2";
+        
+
+        $dba->exec($del);
     ?>
     
 </body>

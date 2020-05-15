@@ -10,16 +10,17 @@
         
         try
         {
-            $join = new PDO('mysql:host=localhost;dbname=Uczelnia', 'root', '');
+            $dba = new PDO('mysql:host=localhost;dbname=Uczelnia', 'root', '');
         }
-        catch (PDOException $e)
+        catch(PDOException $e)
         {
-            echo $e->getMessage() . "<br/>";
+            echo $e->getMessage();
             die();
         }
 
-        $zap = "UPDATE Studenci SET nazwisko = 'Malinowski' WHERE id = 3";
-        $join->query($zap);
+        $upd = "UPDATE Studenci SET nazwisko = 'Malinowski' WHERE id = 3";
+        
+        $dba->exec($upd);
     ?>
 
 </body>
